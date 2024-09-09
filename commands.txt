@@ -1,0 +1,5 @@
+Installeer JS dependencies (Ik gebruik NPM 10.2.4 & Node 20.11.1)
+npm -i
+
+Run tailwindcss wanneer je development doet.
+npm run dev
