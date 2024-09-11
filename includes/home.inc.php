@@ -3,7 +3,7 @@
     <div class="text-center">
         <h2 class="text-4xl font-bold mb-4">Find Your Perfect Match</h2>
         <p class="text-lg mb-8">Join DigiDate today and start meeting amazing people!</p>
-        <a href="#" class="bg-purple-500 text-white px-6 py-3 rounded-full hover:bg-purple-700">Get Started</a>
+        <a class="bg-purple-500 text-white px-6 py-3 rounded-full hover:bg-purple-700">Get Started</a>
     </div>
     <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white p-6 rounded-lg shadow-lg">
