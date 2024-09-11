@@ -1,97 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 h-screen flex items-center justify-center">
+<div class="w-full max-w-3xl p-4 mx-auto">
+    <form class="bg-white shadow-lg rounded-lg px-8 py-6" action="php/register.php" method="post">
+        <h2 class="text-3xl font-extrabold mb-6 text-center text-purple-600">Registreren</h2>
 
-<div class="w-full max-w-3xl p-4">
-    <form class="bg-white shadow-lg rounded px-8 py-6" action="php/register.inc.php" method="post">
-        <h2 class="text-2xl font-bold mb-6 text-center text-purple-600">Register</h2>
 
-        <!-- Two-column grid for form fields -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <?php session_start();
+        if (isset($_SESSION['error'])) { ?>
+            <div role="alert" class="alert alert-error">
+                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
+                     viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>Fout! <?= $_SESSION['error'] ?></span>
+            </div>
+            <?php unset($_SESSION['error']);
+        }
+        ?>
 
-            <!-- First column -->
-            <div>
-                <label for="firstname" class="block text-gray-700 text-sm font-bold mb-2">First Name</label>
-                <input type="text" id="firstname" placeholder="Enter your first name"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+
+            <div class="mb-4">
+                <label for="firstname" class="block text-gray-800 text-sm font-semibold mb-2">Voornaam</label>
+                <input type="text" name="firstName" id="firstname" placeholder="Voer uw voornaam in"
+                       class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
             </div>
 
-            <div>
-                <label for="middlename" class="block text-gray-700 text-sm font-bold mb-2">Middle Name</label>
-                <input type="text" id="middlename" placeholder="Enter your middle name"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+            <div class="mb-4">
+                <label for="middlename" class="block text-gray-800 text-sm font-semibold mb-2">Tussenvoegsel</label>
+                <input type="text" name="middleName" id="middlename" placeholder="Voer uw tussenvoegsel in"
+                       class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
             </div>
 
-            <div>
-                <label for="lastname" class="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
-                <input type="text" id="lastname" placeholder="Enter your last name"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+            <div class="mb-4">
+                <label for="lastname" class="block text-gray-800 text-sm font-semibold mb-2">Achternaam</label>
+                <input type="text" name="lastName" id="lastname" placeholder="Voer uw achternaam in"
+                       class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
             </div>
 
-            <div>
-                <label for="residence" class="block text-gray-700 text-sm font-bold mb-2">Residence</label>
-                <input type="text" id="residence" placeholder="Enter your residence"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+            <div class="mb-4">
+                <label for="residence" class="block text-gray-800 text-sm font-semibold mb-2">Studie</label>
+                <input type="text" name="study" id="residence" placeholder="Voer uw woonplaats in"
+                       class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
             </div>
 
-            <div>
-                <label for="phonenumber" class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
-                <input type="text" id="phonenumber" placeholder="Enter your phone number"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+            <div class="mb-4">
+                <label for="residence" class="block text-gray-800 text-sm font-semibold mb-2">Woonplaats</label>
+                <input type="text" name="residence" id="residence" placeholder="Voer uw woonplaats in"
+                       class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
             </div>
 
-            <div>
-                <label for="dob" class="block text-gray-700 text-sm font-bold mb-2">Date of Birth</label>
-                <input type="date" id="dob"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+            <div class="mb-4">
+                <label for="phonenumber" class="block text-gray-800 text-sm font-semibold mb-2">Telefoonnummer</label>
+                <input type="number" name="phonenumber" id="phonenumber" placeholder="Voer uw telefoonnummer in"
+                       class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
             </div>
 
-            <!-- Second column -->
-            <div>
-                <label for="gender" class="block text-gray-700 text-sm font-bold mb-2">Gender</label>
-                <select id="gender" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
-                    <option value="" disabled selected>Select your gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
+            <div class="mb-4">
+                <label for="dob" class="block text-gray-800 text-sm font-semibold mb-2">Geboortedatum</label>
+                <input type="date" name="dob" id="dob"
+                       class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+            </div>
+
+            <div class="mb-4">
+                <label for="gender" class="block text-gray-800 text-sm font-semibold mb-2">Geslacht</label>
+                <select id="gender" name="gender"
+                        class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    <option value="" disabled selected>Selecteer uw geslacht</option>
+                    <option value="male">Man</option>
+                    <option value="female">Vrouw</option>
                 </select>
             </div>
 
-            <div>
-                <label for="profile_picture" class="block text-gray-700 text-sm font-bold mb-2">Profile Picture</label>
-                <input type="file" id="profile_picture"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+
+            <div class="mb-4">
+                <label for="gender" class="block text-gray-800 text-sm font-semibold mb-2">Voorkeur geslacht</label>
+                <select id="gender" name="preferredGender"
+                        class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    <option value="" disabled selected>Selecteer uw geslacht</option>
+                    <option value="male">Man</option>
+                    <option value="female">Vrouw</option>
+                </select>
             </div>
 
-            <div>
-                <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                <input type="email" id="email" placeholder="Enter your email"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+            <div class="mb-4">
+                <label for="profile_picture" class="block text-gray-800 text-sm font-semibold mb-2">Profielfoto</label>
+                <input type="file" name="pfp" id="profile_picture"
+                       class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
             </div>
 
-            <div>
-                <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                <input type="password" id="password" placeholder="Enter your password"
-                       class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+            <div class="mb-4">
+                <label for="email" class="block text-gray-800 text-sm font-semibold mb-2">E-mailadres</label>
+                <input type="email" name="email" id="email" placeholder="Voer uw e-mailadres in"
+                       class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+            </div>
+
+            <div class="mb-4">
+                <label for="password" class="block text-gray-800 text-sm font-semibold mb-2">Wachtwoord</label>
+                <input type="password" name="password" id="password" placeholder="Voer uw wachtwoord in"
+                       class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+            </div><br>
+
+            <div class="requirements mb-2" id="passwordlength" style="color: white">
+                <small>Wachtwoord moet minimaal 8 tekens bevatten.</small>
+            </div>
+            <div class="requirements mb-2" id="passwordCapitalLetter" style="color: white">
+                <small>Wachtwoord moet 1 hoofdletter bevatten.</small>
+            </div>
+            <div class="requirements mb-2" id="passwordSmallLetter" style="color: white">
+                <small>Wachtwoord moet 1 kleine letter bevatten.</small>
+            </div>
+            <div class="requirements mb-2" id="passwordNumber" style="color: white">
+                <small>Wachtwoord moet 1 nummer bevatten.</small>
+            </div>
+            <div class="requirements mb-2" id="passwordSpecialCharacter" style="color: white">
+                <small>Wachtwoord moet 1 speciaal teken bevatten.</small>
             </div>
         </div>
 
-        <!-- Submit button -->
+
         <div class="flex items-center justify-center mt-6">
             <button
-                class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
-                type="submit">
+                    class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    type="submit">
                 Register
             </button>
         </div>
     </form>
 </div>
-
-</body>
-</html>

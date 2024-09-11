@@ -1,5 +1,5 @@
 <?php
-$page = $_GET['page'] ?? 'home';
+$page = $_GET['page'] ?? 'home_page';
 
 // A quick check to see if the page is in the includes folder,
 // this prevents directory traversal and avoids having to manually add each page to the array
@@ -18,6 +18,7 @@ if (!in_array($page, array_map(function ($p) {
     <meta charset="UTF-8">
     <title><?php echo ucfirst($page); ?> | DigiDate</title>
     <link rel="stylesheet" href="css/output.css">
+
 </head>
 
 <body>
