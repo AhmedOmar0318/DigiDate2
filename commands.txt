@@ -3,3 +3,7 @@ npm -i
 
 Run tailwindcss wanneer je development doet.
 npm run dev
+
+Voor mailer en logger run
+
+composer install
