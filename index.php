@@ -23,6 +23,7 @@ if (!in_array($page, array_map(function ($p) {
 
 <body>
         <?php
+            include "partials/navbar.inc.php";
             include "includes/$page.inc.php";
         ?>
     </body>
