@@ -1,6 +1,3 @@
-<?php
-include("./partials/navbar.inc.php");
-?>
 
 <main class="container mx-auto mt-10 p-4">
     <div class="text-center">

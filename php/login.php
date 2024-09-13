@@ -1,7 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     session_start();
-
     require '../../private/conn_digidate_examen.php';
     $email = $_POST['email'];
     $password = $_POST['password'];

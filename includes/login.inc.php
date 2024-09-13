@@ -1,6 +1,3 @@
-<?php
-include("./partials/navbar.inc.php");
-?>
 
 <main class="bg-gradient-to-r from-pink-100 to-pink-200 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-lg overflow-hidden">
@@ -51,7 +48,7 @@ include("./partials/navbar.inc.php");
             </form>
 
             <p class="text-center text-sm text-gray-500 mt-6">
-                Heb je nog geen account? <a href="register.php" class="text-pink-600 hover:text-pink-700 font-medium">Registreer
+                Heb je nog geen account? <a href="../register.inc.php" class="text-pink-600 hover:text-pink-700 font-medium">Registreer
                     nu</a>
             </p>
         </div>

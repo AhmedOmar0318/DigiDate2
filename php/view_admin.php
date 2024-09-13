@@ -1,23 +1,36 @@
 <?php
-
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    exit;
+// Assuming the session and database connection are already initialized
+echo '<pre>';
+var_dump($_SESSION);
+echo '</pre>';
+// Check if the user is logged in and if their role is 2 (Admin)
+if (!isset($_SESSION['userId']) || $_SESSION['role'] !== 2) {
+    exit('Access denied.');
 }
 
-$query = "SELECT firstName, middleName, lastName, email, password,role FROM users WHERE role = 1 ";
+try {
+    // Prepare the query to fetch users with roleId = 2 (Admins)
+    $query = "SELECT firstName, middleName, lastName, email, password FROM users WHERE roleId = 2 and activated = 1";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$stmt = $conn->prepare($query);
-$stmt->execute();
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($results as $row): ?>
-    <tr>
-        <td class="py-3 px-4"><?php echo htmlspecialchars($row['firstName']); ?></td>
-        <td class="py-3 px-4"><?php echo htmlspecialchars($row['middleName']); ?></td>
-        <td class="py-3 px-4"><?php echo htmlspecialchars($row['lastName']); ?></td>
-        <td class="py-3 px-4"><?php echo htmlspecialchars($row['email']); ?></td>
-        <td class="py-3 px-4"><?php echo htmlspecialchars($row['password']); ?></td>
-    </tr>
-<?php endforeach; ?>
-
-
+    // Check if there are any results
+    if (count($results) === 0) {
+        echo "<tr><td colspan='5' class='py-3 px-4'>No admin users found.</td></tr>";
+    } else {
+        // Display users in a table
+        foreach ($results as $row) {
+            echo "<tr>";
+            echo "<td class='py-3 px-4'>" . htmlspecialchars($row['firstName']) . "</td>";
+            echo "<td class='py-3 px-4'>" . htmlspecialchars($row['middleName']) . "</td>";
+            echo "<td class='py-3 px-4'>" . htmlspecialchars($row['lastName']) . "</td>";
+            echo "<td class='py-3 px-4'>" . htmlspecialchars($row['email']) . "</td>";
+            echo "<td class='py-3 px-4'>" . htmlspecialchars($row['password']) . "</td>";
+            echo "</tr>";
+        }
+    }
+} catch (PDOException $e) {
+    echo "<tr><td colspan='5' class='py-3 px-4'>Error: " . htmlspecialchars($e->getMessage()) . "</td></tr>";
+}
+?>
