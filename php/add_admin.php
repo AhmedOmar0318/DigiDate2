@@ -9,7 +9,7 @@ function validatePassword($password) {
         preg_match("/[a-z]/", $password) &&
         preg_match("/\W/", $password);
 }
-
+test
 if (!validatePassword($_POST['password'])) {
     $_SESSION['error'] = 'Wachtwoord voldoet niet aan vereisten.';
     $_SESSION['data'] = $_POST;
