@@ -1,50 +1,59 @@
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+<?php
+include("./partials/navbar.inc.php");
+?>
 
-<div class="w-full max-w-md">
-    <form class="bg-white shadow-lg rounded px-8 py-8 pt-8" method="post" action="php/login.php">
-        <h2 class="text-2xl font-bold mb-6 text-center text-purple-600">Login</h2>
+<main class="bg-gradient-to-r from-pink-100 to-pink-200 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-lg overflow-hidden">
+        <div class="px-8 py-10 sm:px-12 sm:py-14">
+            <h2 class="text-center text-5xl font-bold text-gray-900 mb-8">
+                Log in op je <span class="text-pink-600">Liefdesverhaal</span>
+            </h2>
+            <p class="text-center text-gray-600 mb-10">
+                Voer je gegevens in om verder te gaan.
+            </p>
+            <form action="php/login.php" method="post" enctype="multipart/form-data" class="space-y-8">
+                <?php
+                if (isset($_SESSION['error'])) {
+                    echo '<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6" role="alert">
+                        <p>' . $_SESSION['error'] . '</p>
+                    </div>';
+                    unset($_SESSION['error']);
+                }
+                ?>
 
+                <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">E-mailadres</label>
+                        <input type="email" name="email" id="email" required
+                               class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700">Wachtwoord</label>
+                        <input type="password" name="password" id="password" required
+                               class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    </div>
+                </div>
 
-        <?php
-        if (isset($_SESSION['error'])) { ?>
-            <div role="alert" class="alert alert-error">
-                <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
-                     viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span>Fout! <?= $_SESSION['error'] ?></span>
-            </div>
-            <?php unset($_SESSION['error']);
-        }
-        ?>
+                <div class="mt-4 flex items-center justify-between">
+                    <div class="text-sm">
+                        <a href="forgot_password.php" class="font-medium text-pink-600 hover:text-pink-500">
+                            Wachtwoord vergeten?
+                        </a>
+                    </div>
+                </div>
 
-        <div class="mb-4">
-            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-            <input type="email" name="email" id="email" placeholder="Email"
-                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
+                <div class="mt-8">
+                    <button type="submit"
+                            class="w-full flex justify-center py-4 px-6 border border-transparent rounded-full shadow-sm text-lg font-medium text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 transition duration-150 ease-in-out">
+                        Log in
+                    </button>
+                </div>
+            </form>
+
+            <p class="text-center text-sm text-gray-500 mt-6">
+                Heb je nog geen account? <a href="register.php" class="text-pink-600 hover:text-pink-700 font-medium">Registreer
+                    nu</a>
+            </p>
         </div>
-
-        <div class="mb-6">
-            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Wachtwoord</label>
-            <input type="password" name="password" id="password" placeholder="Wachtwoord"
-                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline focus:border-purple-500">
-        </div>
-
-        <div class="flex items-center justify-between">
-            <button
-                    class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit">
-                Log In
-            </button>
-
-            <a class="inline-block align-baseline font-bold text-sm text-purple-600 hover:text-purple-700" href="#">
-                Wachtwoord vergeten?
-            </a>
-        </div>
-    </form>
-</div>
-
-</body>
-</html>
-
+    </div>
+</main>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 $page = $_GET['page'] ?? 'home_page';
 
 // A quick check to see if the page is in the includes folder,
