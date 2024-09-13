@@ -5,7 +5,7 @@
         <h2 class="text-2xl font-bold mb-6 text-center text-purple-600">Login</h2>
 
 
-        <?php session_start();
+        <?php
         if (isset($_SESSION['error'])) { ?>
             <div role="alert" class="alert alert-error">
                 <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none"
