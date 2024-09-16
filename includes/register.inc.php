@@ -40,12 +40,20 @@
                         <label for="phone" class="block text-sm font-medium text-gray-700">Telefoonnummer</label>
                         <input type="tel" name="phone" id="phone" required
                                class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+
                     </div>
-                    <div class="sm:col-span-2">
+                    <div class="relative sm:col-span-2">
                         <label for="password" class="block text-sm font-medium text-gray-700">Wachtwoord</label>
                         <input type="password" name="password" id="password" required
-                               class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                               class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md pr-10">
+                        <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-700 cursor-pointer" onclick="togglePassword()">
+        <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.522 5 12 5c4.477 0 8.268 2.943 9.542 7-.4 1.426-1.128 2.726-2.08 3.786M12 19c-4.477 0-8.268-2.943-9.542-7a9.957 9.957 0 011.048-2.408"/>
+        </svg>
+    </span>
                     </div>
+
                     <div>
                         <label for="city" class="block text-sm font-medium text-gray-700">Woonplaats</label>
                         <input type="text" name="city" id="city" required
@@ -115,3 +123,19 @@
         </div>
     </div>
 </main>
+
+<script>
+    function togglePassword() {
+        var passwordField = document.getElementById("password");
+        var eyeIcon = document.getElementById("eyeIcon");
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            // Change the eye icon to "eye open"
+            eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.522 5 12 5c4.477 0 8.268 2.943 9.542 7-.4 1.426-1.128 2.726-2.08 3.786M12 19c-4.477 0-8.268-2.943-9.542-7a9.957 9.957 0 011.048-2.408"/>';
+        } else {
+            passwordField.type = "password";
+            // Change the eye icon to "eye closed"
+            eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.97 10.97 0 0112 19c-4.477 0-8.268-2.943-9.542-7A10.978 10.978 0 013.365 7.26M9.88 15.828A3.001 3.001 0 0112 12m0 0a3 3 0 01-1.88-5.828"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3l18 18"/>';
+        }
+    }
+</script>
