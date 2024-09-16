@@ -1,6 +1,5 @@
 <?php
 include '../../private/conn_digidate_examen.php';
-session_start();
 
 $verificationCode = mt_rand(100000, 999999);
 $_SESSION['verification_code'] = $verificationCode;

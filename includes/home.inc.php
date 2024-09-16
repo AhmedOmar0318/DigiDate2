@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dating Site</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100">
-<header class="bg-purple-500 text-white p-4">
-    <div class="container mx-auto flex justify-between items-center">
-        <h1 class="text-3xl font-bold">DigiDate</h1>
-        <nav>
-            <a href="#" class="px-3 py-2 rounded hover:bg-pink-700">Home</a>
-            <a href="#" class="px-3 py-2 rounded hover:bg-pink-700">About</a>
-            <a href="#" class="px-3 py-2 rounded hover:bg-pink-700">Contact</a>
-            <a href="#" class="px-3 py-2 rounded hover:bg-pink-700">Sign Up</a>
-        </nav>
-    </div>
-</header>
+
 <main class="container mx-auto mt-10 p-4">
     <div class="text-center">
         <h2 class="text-4xl font-bold mb-4">Find Your Perfect Match</h2>
@@ -39,5 +20,3 @@
         </div>
     </div>
 </main>
-</body>
-</html>

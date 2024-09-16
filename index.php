@@ -1,4 +1,5 @@
 <?php
+session_start();
 $page = $_GET['page'] ?? 'home_page';
 
 // A quick check to see if the page is in the includes folder,
@@ -23,6 +24,7 @@ if (!in_array($page, array_map(function ($p) {
 
 <body>
         <?php
+            include "partials/navbar.inc.php";
             include "includes/$page.inc.php";
         ?>
     </body>
