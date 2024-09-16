@@ -38,7 +38,7 @@
                     </div>
                     <div>
                         <label for="phone" class="block text-sm font-medium text-gray-700">Telefoonnummer</label>
-                        <input type="tel" name="phone" id="phone" required
+                        <input type="number" name="phonenumber" id="phone" required
                                class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
 
                     </div>
@@ -56,7 +56,7 @@
 
                     <div>
                         <label for="city" class="block text-sm font-medium text-gray-700">Woonplaats</label>
-                        <input type="text" name="city" id="city" required
+                        <input type="text" name="residence" id="city" required
                                class="mt-1 focus:ring-pink-500 focus:border-pink-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div>

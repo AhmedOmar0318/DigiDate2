@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedpassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     if ($query->rowCount() == 0) {
-        $stmt = $conn->prepare("INSERT INTO users (firstname, middlename, lastname, email, password, phonenumber, dob, study, gender,preferredGender, residence, role, deletedAt)
-            VALUES(:firstName, :middleName, :lastName, :email, :password, :phonenumber, :dob, :study, :gender,:preferredGender, :residence, :role, :deletedAt)");
+        $stmt = $conn->prepare("INSERT INTO users (firstname, middlename, lastname, email, password, phonenumber, dob, study, gender,preferredGender, residence, roleId, deletedAt)
+            VALUES(:firstName, :middleName, :lastName, :email, :password, :phonenumber, :dob, :study, :gender,:preferredGender, :residence, :roleId, :deletedAt)");
 
         $stmt->execute([
             ':firstName' => $_POST['firstName'],
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':gender' => $_POST['gender'],
             ':preferredGender' => $_POST['preferredGender'],
             ':residence' => $_POST['residence'],
-            ':role' => 1,
+            ':roleId' => 1,
             ':deletedAt' => null
         ]);
 
