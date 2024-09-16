@@ -7,7 +7,7 @@
 if (!isset($_SESSION['userId']) || $_SESSION['role'] !== 2) {
     exit('Access denied.');
 }
-
+test
 try {
     // Prepare the query to fetch users with roleId = 2 (Admins)
     $query = "SELECT firstName, middleName, lastName, email FROM users WHERE roleId = 2 and activated = 1";
