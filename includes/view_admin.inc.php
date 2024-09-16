@@ -20,7 +20,7 @@
                 </thead>
                 <tbody>
                 <!-- Include PHP script here to populate table rows -->
-                <?php include 'php/view_admin.php'; ?>
+                    <?php include 'php/view_admin.php'; ?>
                 </tbody>
             </table>
         </div>

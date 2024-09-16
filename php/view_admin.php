@@ -10,7 +10,7 @@ if (!isset($_SESSION['userId']) || $_SESSION['role'] !== 2) {
 
 try {
     // Prepare the query to fetch users with roleId = 2 (Admins)
-    $query = "SELECT firstName, middleName, lastName, email, password FROM users WHERE roleId = 2 and activated = 1";
+    $query = "SELECT firstName, middleName, lastName, email FROM users WHERE roleId = 2 and activated = 1";
     $stmt = $conn->prepare($query);
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -26,7 +26,6 @@ try {
             echo "<td class='py-3 px-4'>" . htmlspecialchars($row['middleName']) . "</td>";
             echo "<td class='py-3 px-4'>" . htmlspecialchars($row['lastName']) . "</td>";
             echo "<td class='py-3 px-4'>" . htmlspecialchars($row['email']) . "</td>";
-            echo "<td class='py-3 px-4'>" . htmlspecialchars($row['password']) . "</td>";
             echo "</tr>";
         }
     }
