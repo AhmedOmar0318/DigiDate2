@@ -1,8 +1,8 @@
 <?php
 // Assuming the session and database connection are already initialized
-echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
+//echo '<pre>';
+//var_dump($_SESSION);
+//echo '</pre>';
 // Check if the user is logged in and if their role is 2 (Admin)
 if (!isset($_SESSION['userId']) || $_SESSION['role'] !== 2) {
     exit('Access denied.');
