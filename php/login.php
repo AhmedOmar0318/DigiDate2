@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['userId'] = $userData['userId'];
                     $_SESSION['role'] = $userData['roleId'];
 
-                    header('Location: ../index.php?page=home_page');
+                    header('Location: ../index.php?page=home');
                     exit();
 
                 } elseif ($userData['roleId'] == 2) {
