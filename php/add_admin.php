@@ -40,8 +40,6 @@ if ($query->rowCount() == 0) {
             ':activated' => 1,
         ]);
 
-        $_SESSION['role'] = 1;
-        $_SESSION['userid'] = $conn->lastInsertId();
 
         header('Location: ../index.php?page=view_admin');
         exit();

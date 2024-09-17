@@ -16,14 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($userData['roleId'] == 1) {
 
                     $_SESSION['userId'] = $userData['userId'];
-                    $_SESSION['role'] = $userData['roleId'];
+                    $_SESSION['roleId'] = $userData['roleId'];
 
                     header('Location: ../index.php?page=home');
                     exit();
 
                 } elseif ($userData['roleId'] == 2) {
                     $_SESSION['userId'] = $userData['userId'];
-                    $_SESSION['role'] = $userData['roleId'];
+                    $_SESSION['roleId'] = $userData['roleId'];
 
                     header('Location: ../index.php?page=view_admin');
                     exit();

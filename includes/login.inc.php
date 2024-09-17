@@ -48,7 +48,8 @@
             </form>
 
             <p class="text-center text-sm text-gray-500 mt-6">
-                Heb je nog geen account? <a href="../register.inc.php" class="text-pink-600 hover:text-pink-700 font-medium">Registreer
+                Heb je nog geen account?
+                <a href="index.php?page=register" class="font-medium text-pink-600 hover:text-pink-500">Registreer
                     nu</a>
             </p>
         </div>
