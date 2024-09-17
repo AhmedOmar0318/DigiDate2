@@ -1,5 +1,4 @@
 <?php
-session_start();
 $token = $_GET['token'];
 if (isset($_SESSION['error'])) { ?>
     <div role="alert" class="alert alert-error">
