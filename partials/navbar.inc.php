@@ -1,5 +1,10 @@
 <?php
-$isAdmin = false;
+//    if roleId is 1, the user is a regular user, if 2 its an admin, if none then the user is not logged in
+if (isset($_SESSION['roleId'])) {
+    $isAdmin = $_SESSION['roleId'] == 2;
+} else {
+    $isAdmin = false;
+}
 
 $navItems = $isAdmin
     ? [
@@ -43,12 +48,20 @@ $currentPage = $_GET['page'] ?? 'home';
                     </a>
                 <?php endif; ?>
 
-                <form method="post" action="index.php?page=logout" class="hidden sm:block">
-                    <button type="submit"
-                            class="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
-                        Logout
-                    </button>
-                </form>
+                <!--                if userId is set in the SESSION show logout -->
+                <?php if (isset($_SESSION['userId'])): ?>
+                    <form method="post" action="php/logout.php" class="hidden sm:block">
+                        <button type="submit"
+                                class="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
+                            Logout
+                        </button>
+                    </form>
+                <?php else: ?>
+                    <a href="index.php?page=login"
+                       class="text-white hover:bg-white hover:bg-opacity-20 px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
+                        Login
+                    </a>
+                <?php endif; ?>
 
                 <div class="sm:hidden">
                     <button id="mobile-menu-button" aria-label="Open menu"
