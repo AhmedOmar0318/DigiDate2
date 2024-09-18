@@ -2,7 +2,7 @@
 session_start();
 $page = $_GET['page'] ?? 'home';
 
-// A quick check to see if the page is in the includes folder,
+// A quick check to see if the page is in the includes folder
 // this prevents directory traversal and avoids having to manually add each page to the array
 // Also makes sure to fallback to 404 if the page is not found
 if (!in_array($page, array_map(function ($p) {
