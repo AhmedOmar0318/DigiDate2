@@ -5,7 +5,7 @@ session_start();
 $verificationCode = mt_rand(100000, 999999);
 $_SESSION['verification_code'] = $verificationCode;
 
-$userid = $_SESSION['userid'];
+$userid = $_SESSION['userId'];
 
 $token = bin2hex(random_bytes(16));
 $token_hash = hash("sha256", $token);
