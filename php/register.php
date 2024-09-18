@@ -53,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['role'] = 1;
         $_SESSION['userid'] = $conn->lastInsertId();
 
+        $_SESSION['mailCode'] = 'activateAccount';
         header('location: ../php/send_login_code.php');
         exit();
     } else {
