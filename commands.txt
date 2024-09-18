@@ -7,3 +7,6 @@ npm run dev
 Voor mailer en logger run
 
 composer install
+
+Voor php server runnen:
+php -S 127.0.0.1:8000

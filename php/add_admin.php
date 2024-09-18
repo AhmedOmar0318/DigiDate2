@@ -23,9 +23,9 @@ $query = $conn->prepare("SELECT * FROM users WHERE email = :email AND roleId = '
 $query->bindParam(':email', $_POST['email']);
 $query->execute();
 
+$user = $query->fetch(PDO::FETCH_ASSOC);
 
-
-if ($query->rowCount() == 0) {
+if ($user === false || $user['activated'] == 0) {
     $stmt = $conn->prepare("INSERT INTO users (firstname, middlename, lastname, email, password, activated, roleId)
             VALUES(:firstName, :middleName, :lastName, :email, :password, :activated, :roleId)");
 
@@ -40,7 +40,6 @@ if ($query->rowCount() == 0) {
             ':activated' => 1,
         ]);
 
-
         header('Location: ../index.php?page=view_admin');
         exit();
     } catch (PDOException $e) {
@@ -49,7 +48,7 @@ if ($query->rowCount() == 0) {
         exit();
     }
 } else {
-    $_SESSION['error'] = 'Email bestaat al.';
+    $_SESSION['error'] = 'Email bestaat al en is geactiveerd.';
     $_SESSION['data'] = $_POST;
     header('Location: ../index.php?page=add_admin');
     exit();
