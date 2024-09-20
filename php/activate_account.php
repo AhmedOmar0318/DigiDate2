@@ -14,17 +14,32 @@ $result = $query->fetch(PDO::FETCH_ASSOC);
 if ($_SESSION['verification_code'] == $code) {
     if ($result['tokenExpiresAt'] > $currentTime) {
 
+        if (isset($_SESSION['mailCode']) && $_SESSION['mailCode'] == 'activateAccount') {
+            $stmt = $conn->prepare("UPDATE users SET token = null ,  tokenExpiresAt = null, activated = 1 WHERE token = :token");
+            $stmt->execute(array("token" => $token));
 
-        $stmt = $conn->prepare("UPDATE users SET token = null ,  tokenExpiresAt = null, activated = 1 WHERE token = :token");
-        $stmt->execute(array("token" => $token));
-        header('location: ../index.php?page=login');
-        exit();
+            unset($_SESSION['mailCode']);
+
+            header('location: ../index.php?page=login');
+            exit();
+
+        } elseif (isset($_SESSION['mailCode']) && $_SESSION['mailCode'] == '2fa') {
+
+            $stmt = $conn->prepare("UPDATE users SET token = null ,  tokenExpiresAt = null, activated = 1 WHERE token = :token");
+            $stmt->execute(array("token" => $token));
+
+            unset($_SESSION['mailCode']);
+            header('location: ../index.php?page=home');
+            exit();
+        }
+
+
     }
 
 
 } else {
     $_SESSION['error'] = 'Verkeerde code, probeer het nogmaals.';
-    header("location: ../index.php?page=activate_account&token=$token");
+    header("location: ../index.php?page=2fa&token=$token");
     exit();
 }
 

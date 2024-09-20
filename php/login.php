@@ -18,7 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['userId'] = $userData['userId'];
                     $_SESSION['roleId'] = $userData['roleId'];
 
-                    header('Location: ../index.php?page=home');
+                    $_SESSION['mailCode'] = '2fa';
+                    header('location: ../php/send_login_code.php');
                     exit();
 
                 } elseif ($userData['roleId'] == 2) {
