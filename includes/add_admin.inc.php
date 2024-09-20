@@ -43,6 +43,8 @@
                             </svg>
                         </span>
                 </div>
+                <p class="text-gray-500 text-sm mt-1">Minimaal 8 tekens, inclusief hoofdletters, kleine letters, cijfers en speciale tekens.</p>
+
             </div>
             <div class="flex items-center justify-between">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Admin</button>

@@ -7,12 +7,12 @@ if (isset($_SESSION['roleId'])) {
 
 $navItems = $isAdmin
     ? [
-        'Profiel' => ['url' => 'index.php?page=profile', 'method' => 'get'],
+        'Profiel' => ['url' => 'index.php?page=user_profile', 'method' => 'get'],
         'Beheer Tags' => ['url' => 'index.php?page=manage_tags', 'method' => 'get'],
         'Beheer Admins' => ['url' => 'index.php?page=view_admin', 'method' => 'get'],
     ]
     : [
-        'Profiel' => ['url' => 'index.php?page=profile', 'method' => 'get'],
+        'Profiel' => ['url' => 'index.php?page=user_profile', 'method' => 'get'],
         'Matches' => ['url' => 'index.php?page=matches', 'method' => 'get'],
     ];
 
