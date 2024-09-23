@@ -34,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pfp = base64_encode(file_get_contents($_FILES['pfp']['tmp_name']));
 
 
-        $stmt = $conn->prepare("INSERT INTO users (firstname, middlename, lastname, email, password,pfp, phonenumber, dob, study, gender,preferredGender, residence, roleId, deletedAt)
-            VALUES(:firstName, :middleName, :lastName, :email, :password,:pfp, :phonenumber, :dob, :study, :gender,:preferredGender, :residence, :roleId, :deletedAt)");
+        $stmt = $conn->prepare("INSERT INTO users (firstname, middlename, lastname, email, password, phonenumber, dob, study, gender,preferredGender, residence, roleId, deletedAt)
+            VALUES(:firstName, :middleName, :lastName, :email, :password, :phonenumber, :dob, :study, :gender,:preferredGender, :residence, :roleId, :deletedAt)");
 
         $stmt->execute([
             ':firstName' => $_POST['firstName'],
@@ -43,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':lastName' => $_POST['lastName'],
             ':email' => $_POST['email'],
             ':password' => $hashedpassword,
-            ':pfp' => $pfp,
             ':phonenumber' => $_POST['phonenumber'],
             ':dob' => $_POST['dob'],
             ':study' => $_POST['study'],
