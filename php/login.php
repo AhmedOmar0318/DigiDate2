@@ -16,14 +16,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($userData['roleId'] == 1) {
 
                     $_SESSION['userId'] = $userData['userId'];
-                    $_SESSION['role'] = $userData['roleId'];
+                    $_SESSION['roleId'] = $userData['roleId'];
 
-                    header('Location: ../index.php?page=home');
+                    $_SESSION['mailCode'] = '2fa';
+                    header('location: ../php/send_login_code.php');
                     exit();
 
                 } elseif ($userData['roleId'] == 2) {
                     $_SESSION['userId'] = $userData['userId'];
-                    $_SESSION['role'] = $userData['roleId'];
+                    $_SESSION['roleId'] = $userData['roleId'];
 
                     header('Location: ../index.php?page=view_admin');
                     exit();

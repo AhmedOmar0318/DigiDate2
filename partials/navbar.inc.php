@@ -1,5 +1,4 @@
 <?php
-//    if roleId is 1, the user is a regular user, if 2 its an admin, if none then the user is not logged in
 if (isset($_SESSION['roleId'])) {
     $isAdmin = $_SESSION['roleId'] == 2;
 } else {
@@ -8,12 +7,13 @@ if (isset($_SESSION['roleId'])) {
 
 $navItems = $isAdmin
     ? [
-        'Profiel' => ['url' => 'index.php?page=profile', 'method' => 'get'],
+        'Profiel' => ['url' => 'index.php?page=user_profile', 'method' => 'get'],
         'Beheer Tags' => ['url' => 'index.php?page=manage_tags', 'method' => 'get'],
-        'Beheer Admins' => ['url' => 'index.php?page=manage_admins', 'method' => 'get'],
+        'Beheer Admins' => ['url' => 'index.php?page=view_admin', 'method' => 'get'],
     ]
     : [
-        'Profiel' => ['url' => 'index.php?page=profile', 'method' => 'get'],
+        'Profiel' => ['url' => 'index.php?page=user_profile', 'method' => 'get'],
+        'Profiel add' => ['url' => 'index.php?page=add_profile', 'method' => 'get'],
         'Matches' => ['url' => 'index.php?page=matches', 'method' => 'get'],
     ];
 
