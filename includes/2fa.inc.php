@@ -16,7 +16,7 @@ if (isset($_SESSION['mailCode']) && $_SESSION['mailCode'] == 'activateAccount') 
 
     <div class="container mt-3">
         <h2>Activeer account</h2>
-        <form action="php/activate_account.php" method="POST" enctype="multipart/form-data">
+        <form action="php/checkMailCode.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
                 <label>Voer code in:</label>
                 <input type="text" class="form-control" placeholder="Code" name="code" required>
@@ -31,7 +31,7 @@ if (isset($_SESSION['mailCode']) && $_SESSION['mailCode'] == 'activateAccount') 
 
     <div class="container mt-3">
         <h2>Verifeer account</h2>
-        <form action="php/activate_account.php" method="POST" enctype="multipart/form-data">
+        <form action="php/checkMailCode.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
                 <label>Voer code in:</label>
                 <input type="text" class="form-control" placeholder="Code" name="code" required>

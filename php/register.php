@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hashedpassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     if ($query->rowCount() == 0) {
-//        $pfp = base64_encode(file_get_contents($_FILES['pfp']['tmp_name']));
+        $pfp = base64_encode(file_get_contents($_FILES['pfp']['tmp_name']));
 
 
         $stmt = $conn->prepare("INSERT INTO users (firstname, middlename, lastname, email, password, phonenumber, dob, study, gender,preferredGender, residence, roleId, deletedAt)
@@ -43,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':lastName' => $_POST['lastName'],
             ':email' => $_POST['email'],
             ':password' => $hashedpassword,
-//            ':pfp' => $pfp,
             ':phonenumber' => $_POST['phonenumber'],
             ':dob' => $_POST['dob'],
             ':study' => $_POST['study'],
@@ -54,15 +53,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':deletedAt' => null
         ]);
 
-        $_SESSION['role'] = 1;
+        //$_SESSION['role'] = 1;
         $_SESSION['userId'] = $conn->lastInsertId();
 
-        $stmt = $conn->prepare("INSERT INTO userprofiles (FKuserId, genderPreference)
-            VALUES(:FKuserId,  :genderPreference)");
+        $stmt = $conn->prepare("INSERT INTO userprofiles (FKuserId, profilePicture, genderPreference)
+            VALUES(:FKuserId, :profilePicture, :genderPreference)");
 
         $stmt->execute([
             ':FKuserId' => $_SESSION['userId'],
-//            ':profilePicture' => $pfp,
+            ':profilePicture' => $pfp,
             ':genderPreference' => $_POST['preferredGender']
         ]);
 

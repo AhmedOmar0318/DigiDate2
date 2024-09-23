@@ -20,7 +20,7 @@ $query->bindParam(':userid', $userid);
 $query->execute();
 $userData = $query->fetch(PDO::FETCH_ASSOC);
 
-$stmt = $conn->prepare("UPDATE users SET 2faToken = :tokenhash , 2faTokenExpiresAt = :expiry WHERE email = :email");
+$stmt = $conn->prepare("UPDATE users SET 2faToken = :tokenhash ,  2faTokenExpiresAt = :expiry WHERE email = :email");
 $stmt->bindParam(':tokenhash', $token_hash);
 $stmt->bindParam(':expiry', $expiry);
 $stmt->bindParam(':email', $userData['email']);
@@ -37,7 +37,7 @@ if ($query->rowCount() == 1) {
         $mail->Subject = "Confirm login";
         $mail->Body = <<<END
 
-Click <a href="http://localhost/digidate_examen/index.php?page=2fa&token=$token_hash">here</a> to activate your account. Your code is : $verificationCode
+Click <a href="http://127.0.0.1:8000/index.php?page=2fa&token=$token_hash">here</a> to activate your account. Your code is : $verificationCode
 
 END;
 
@@ -46,6 +46,8 @@ END;
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
         }
+
+        unset($_SESSION['userId']);
 
     } elseif (isset($_SESSION['mailCode']) && $_SESSION['mailCode'] == '2fa') {
 
@@ -54,7 +56,7 @@ END;
         $mail->Subject = "Confirm login";
         $mail->Body = <<<END
 
-Click <a href="http://localhost/digidate_examen/index.php?page=2fa&token=$token_hash">here</a> verify. Your code is : $verificationCode
+Click <a href="http://127.0.0.1:8000/index.php?page=2fa&token=$token_hash">here</a> verify. Your code is : $verificationCode
 
 END;
 
@@ -63,6 +65,9 @@ END;
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
         }
+
+        unset($_SESSION['userId']);
+
     }
 
 
