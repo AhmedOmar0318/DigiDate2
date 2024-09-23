@@ -29,11 +29,11 @@ if ($_SESSION['verification_code'] == $code) {
             $stmt->execute(array("token" => $token));
 
             unset($_SESSION['mailCode']);
+            $_SESSION['roleId'] = 1;
+            $_SESSION['userId'] = $result['userId'];
             header('location: ../index.php?page=home');
             exit();
         }
-
-
     }
 
 

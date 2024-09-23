@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ':deletedAt' => null
         ]);
 
-        $_SESSION['role'] = 1;
+        //$_SESSION['role'] = 1;
         $_SESSION['userId'] = $conn->lastInsertId();
 
         $stmt = $conn->prepare("INSERT INTO userprofiles (FKuserId, profilePicture, genderPreference)

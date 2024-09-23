@@ -47,6 +47,8 @@ END;
             echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
         }
 
+        unset($_SESSION['userId']);
+
     } elseif (isset($_SESSION['mailCode']) && $_SESSION['mailCode'] == '2fa') {
 
         $mail->setFrom("noreply@digidate.nl");
@@ -63,6 +65,9 @@ END;
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer error: {$mail->ErrorInfo}";
         }
+
+        unset($_SESSION['userId']);
+
     }
 
 
