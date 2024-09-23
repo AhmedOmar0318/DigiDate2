@@ -5,18 +5,18 @@ $code = $_POST["code"];
 $token = $_POST["token"];
 $currentTime = date('Y-m-d H:i:s', time());
 
-$sql = "SELECT * FROM users WHERE token = :token";
+$sql = "SELECT * FROM users WHERE 2faToken = :2faToken";
 $query = $conn->prepare($sql);
-$query->bindParam(':token', $token);
+$query->bindParam(':2faToken', $token);
 $query->execute();
 $result = $query->fetch(PDO::FETCH_ASSOC);
 
 if ($_SESSION['verification_code'] == $code) {
-    if ($result['tokenExpiresAt'] > $currentTime) {
+    if ($result['2faTokenExpiresAt'] > $currentTime) {
 
         if (isset($_SESSION['mailCode']) && $_SESSION['mailCode'] == 'activateAccount') {
-            $stmt = $conn->prepare("UPDATE users SET token = null ,  tokenExpiresAt = null, activated = 1 WHERE token = :token");
-            $stmt->execute(array("token" => $token));
+            $stmt = $conn->prepare("UPDATE users SET 2faToken = null , 2faTokenExpiresAt = null, activated = 1 WHERE 2faToken = :2faToken");
+            $stmt->execute(array("2faToken" => $token));
 
             unset($_SESSION['mailCode']);
 
@@ -25,8 +25,8 @@ if ($_SESSION['verification_code'] == $code) {
 
         } elseif (isset($_SESSION['mailCode']) && $_SESSION['mailCode'] == '2fa') {
 
-            $stmt = $conn->prepare("UPDATE users SET token = null ,  tokenExpiresAt = null, activated = 1 WHERE token = :token");
-            $stmt->execute(array("token" => $token));
+            $stmt = $conn->prepare("UPDATE users SET 2faToken = null ,  2faTokenExpiresAt = null, activated = 1 WHERE 2faToken = :2faToken");
+            $stmt->execute(array("2faToken" => $token));
 
             unset($_SESSION['mailCode']);
             header('location: ../index.php?page=home');

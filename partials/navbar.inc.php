@@ -13,6 +13,7 @@ $navItems = $isAdmin
     ]
     : [
         'Profiel' => ['url' => 'index.php?page=user_profile', 'method' => 'get'],
+        'Profiel add' => ['url' => 'index.php?page=add_profile', 'method' => 'get'],
         'Matches' => ['url' => 'index.php?page=matches', 'method' => 'get'],
     ];
 

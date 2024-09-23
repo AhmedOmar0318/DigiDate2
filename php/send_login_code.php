@@ -20,7 +20,7 @@ $query->bindParam(':userid', $userid);
 $query->execute();
 $userData = $query->fetch(PDO::FETCH_ASSOC);
 
-$stmt = $conn->prepare("UPDATE users SET token = :tokenhash ,  tokenExpiresAt = :expiry WHERE email = :email");
+$stmt = $conn->prepare("UPDATE users SET 2faToken = :tokenhash , 2faTokenExpiresAt = :expiry WHERE email = :email");
 $stmt->bindParam(':tokenhash', $token_hash);
 $stmt->bindParam(':expiry', $expiry);
 $stmt->bindParam(':email', $userData['email']);
